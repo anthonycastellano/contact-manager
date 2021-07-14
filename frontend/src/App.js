@@ -1,12 +1,12 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {
-    Navbar,
-    Container,
-    Nav
-} from 'react-bootstrap';
+import Navigation from './components/Navigation';
+import People from './components/People';
+import Locations from './components/Locations';
+import AddPerson from "./components/AddPerson";
 
 const client = new ApolloClient({
    uri: 'http://localhost:4000/graphql'
@@ -16,17 +16,12 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div id="main">
-          <Navbar bg="dark" variant="dark" >
-              <Container>
-                  <Navbar.Brand href="/">Contact List</Navbar.Brand>
-                  <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                  <Nav className="me-auto">
-                      <Nav.Link href="/">People</Nav.Link>
-                      <Nav.Link href="/locations">Locations</Nav.Link>
-                      <Nav.Link href="/add">Add Person</Nav.Link>
-                  </Nav>
-              </Container>
-          </Navbar>
+        <Navigation/>
+        <Switch>
+          <Route path='/locations' component={Locations}/>
+          <Route path='/add' component={AddPerson}/>
+          <Route path='/' component={People}/>
+        </Switch>
       </div>
     </ApolloProvider>
   );
