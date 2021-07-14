@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {
+    Navbar,
+    Container,
+    Nav
+} from 'react-bootstrap';
+
+const client = new ApolloClient({
+   uri: 'http://localhost:4000/graphql'
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApolloProvider client={client}>
+      <div id="main">
+          <Navbar bg="dark" variant="dark" >
+              <Container>
+                  <Navbar.Brand href="/">Contact List</Navbar.Brand>
+                  <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                  <Nav className="me-auto">
+                      <Nav.Link href="/">People</Nav.Link>
+                      <Nav.Link href="/locations">Locations</Nav.Link>
+                      <Nav.Link href="/add">Add Person</Nav.Link>
+                  </Nav>
+              </Container>
+          </Navbar>
+      </div>
+    </ApolloProvider>
   );
 }
 
