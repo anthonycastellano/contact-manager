@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'react-apollo';
 import { getPersonQuery } from "../queries/queries";
 
-//TODO: learn more about map
+//TODO: learn more about map, add click functionality for people in location (use hooks)
 
 function PersonDetails(props) {
     const displayPersonDetails = () => {

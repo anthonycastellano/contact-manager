@@ -8,6 +8,7 @@ function People(props) {
 
     const displayPeople = () => {
       let data = props.data;
+      console.log(data.people);
       if(data.loading) {
           return (
               <div>
