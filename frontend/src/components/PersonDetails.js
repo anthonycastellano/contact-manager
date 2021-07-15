@@ -17,7 +17,7 @@ function PersonDetails(props) {
                     <ul>
                         {
                             person.location.people.map(item => {
-                               return  <li key={ item.id }>{ item.name }</li>
+                               return  <li key={ item.id } onClick={(e) => {props.setSelected(item.id)}}>{ item.name }</li>
                             })
                         }
                     </ul>

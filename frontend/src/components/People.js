@@ -29,7 +29,7 @@ function People(props) {
           <ul>
               { displayPeople() }
           </ul>
-          <PersonDetails personId={ selected }/>
+          <PersonDetails personId={ selected } setSelected={setSelected}/>
       </div>
     );
 }
