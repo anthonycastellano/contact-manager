@@ -6,9 +6,10 @@ import {
 } from 'react-bootstrap';
 import React from "react";
 
+// TODO: fixed="top"
 function Navigation(props) {
     return(
-        <Navbar bg="dark" variant="dark" fixed="top">
+        <Navbar bg="dark" variant="dark">
             <Container>
                 <Navbar.Brand href="/">Contact List</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
