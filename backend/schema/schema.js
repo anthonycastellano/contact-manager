@@ -13,15 +13,6 @@ const {
     GraphQLNonNull
 } = graphql;
 
-// let people = [
-//     { name: 'Anthony Castellano', number: '7034742493', id: '1', locationId: '1' },
-//     { name: 'Liz Fetscher', number: '5714148434', id: '2', locationId: '1' }
-// ];
-//
-// let locations = [
-//     { name: 'Leesburg', id: '1' }
-// ];
-
 const PersonType = new GraphQLObjectType({
     name: 'Person',
     fields: () => ({
@@ -31,7 +22,6 @@ const PersonType = new GraphQLObjectType({
         location: {
             type: LocationType,
             resolve(parent, args) {
-                // return _.find(locations, { id: parent.locationId });
                 return Location.findById(parent.locationId);
             }
         }
@@ -46,7 +36,6 @@ const LocationType = new GraphQLObjectType({
         people: {
             type: new GraphQLList(PersonType),
             resolve(parent, args) {
-                // return _.filter(people, { locationId: parent.id });
                 return Person.find({ locationId: parent.id });
             }
         }
@@ -60,7 +49,6 @@ const RootQuery = new GraphQLObjectType({
             type: PersonType,
             args: { id: { type: GraphQLID } },
             resolve(parent, args) {
-                // return _.find(people, { id: args.id });
                 return Person.findById(args.id);
             }
         },
@@ -68,7 +56,6 @@ const RootQuery = new GraphQLObjectType({
             type: LocationType,
             args: { id: { type: GraphQLID } },
             resolve(parent, args) {
-                // return _.find(locations, { id: args.id });
                 return Location.findById(args.id);
             }
         },

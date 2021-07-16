@@ -11,7 +11,7 @@ import AddPerson from "./components/AddPerson";
 
 // change to localhost when served from node
 const client = new ApolloClient({
-   uri: 'http://localhost:4000/graphql'
+   uri: 'http://192.168.1.23:4000/graphql'
 });
 
 function App() {

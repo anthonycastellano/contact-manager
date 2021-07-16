@@ -39,4 +39,22 @@ const getLocationsQuery = gql`
     }
 `;
 
-export { getPeopleQuery, getLocationsQuery, getPersonQuery };
+const addPersonMutation = gql`
+    mutation($name: String!, $number: String!, $locationId: ID!){
+        addPerson(name: $name, number: $number, locationId: $locationId) {
+            name
+            id
+        }
+    }
+`;
+
+const addLocationMutation = gql`
+    mutation($name: String!){
+        addLocation(name: $name){
+            name
+            id
+        }
+    }
+`;
+
+export { getPeopleQuery, getLocationsQuery, getPersonQuery, addPersonMutation, addLocationMutation };
