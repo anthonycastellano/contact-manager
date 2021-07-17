@@ -14,7 +14,6 @@ function AddPerson(props) {
             let locations = props.getLocationsQuery.locations;
             // check if location exists
             for (let i = 0; i < locations.length; i++) {
-                console.log(locations[i].name);
                 if (locations[i].name === locationName) {
                     console.log('found')
                     resolve(locations[i].id);
@@ -52,29 +51,38 @@ function AddPerson(props) {
       document.getElementById('add-person-form').reset();
     };
 
-    // TODO: fix duplicate locations
+    // TODO: don't allow empty name input
+
     return (
-        <form id="add-person-form" onSubmit={(e) => {
-            submit(e);
-            clearFields();
-        }}>
-            <div className="field">
-                <label>Name</label>
-                <input type="text" onChange={(e) => setName(e.target.value)}/>
-            </div>
-
-            <div className="field">
-                <label>Number</label>
-                <input type="text" onChange={(e) => setNumber(e.target.value)}/>
-            </div>
-
-            <div className="field">
-                <label>Location</label>
-                <input type="text" onChange={(e) => setLocation(e.target.value)}/>
-            </div>
-
-            <button>+</button>
-        </form>
+        <div className="container">
+            <form className="form-group" id="add-person-form" onSubmit={(e) => {
+                submit(e);
+                clearFields();
+                document.getElementById('label').innerHTML = 'Contact added!';
+                setTimeout(() => {
+                    document.getElementById('label').innerHTML = 'Add a new contact'
+                }, 3000);
+            }}>
+                <div className="field">
+                    <label className="text-primary">Name</label>
+                    <input className="form-control" type="text" onChange={(e) => setName(e.target.value)}/>
+                </div>
+                <br/>
+                <div className="field">
+                    <label className="text-primary">Number</label>
+                    <input className="form-control" type="text" onChange={(e) => setNumber(e.target.value)}/>
+                </div>
+                <br/>
+                <div className="field">
+                    <label className="text-primary">Location</label>
+                    <input className="form-control" type="text" onChange={(e) => setLocation(e.target.value)}/>
+                </div>
+                <br/>
+                <div className="row mt-3">
+                    <button id="label" className='btn btn-primary'>Add contact</button>
+                </div>
+            </form>
+        </div>
     );
 }
 

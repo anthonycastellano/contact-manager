@@ -16,7 +16,7 @@ function Navigation(props) {
                 <Nav className="me-auto">
                     <Nav.Link href="/">People</Nav.Link>
                     <Nav.Link href="/locations">Locations</Nav.Link>
-                    <Nav.Link href="/add">Add Person</Nav.Link>
+                    <Nav.Link href="/add">Add Contact</Nav.Link>
                 </Nav>
             </Container>
         </Navbar>

@@ -17,19 +17,31 @@ function People(props) {
           );
       } else {
           return data.people.map(person => {
-             return (
-               <li key={ person.id } onClick={ (e) => {setSelected(person.id)}}>{ person.name }</li>
-             );
+              if (person.id === selected) {
+                  return (
+                      <li className="list-group-item list-group-item-action active" key={ person.id } onClick={ (e) => {setSelected(person.id)}}>{ person.name }</li>
+                  );
+              } else {
+                  return (
+                      <li className="list-group-item list-group-item-action list-group-item-dark" key={ person.id } onClick={ (e) => {setSelected(person.id)}}>{ person.name }</li>
+                  );
+              }
           });
       }
     };
 
     return (
-      <div>
-          <ul>
-              { displayPeople() }
-          </ul>
-          <PersonDetails personId={ selected } setSelected={setSelected}/>
+      <div className="container">
+          <div className="row">
+              <div className="col-4 mt-5 mx-4">
+                  <ul className="list-group">
+                      { displayPeople() }
+                  </ul>
+              </div>
+              <div className="col mt-5 mx-4">
+                  <PersonDetails personId={ selected } setSelected={setSelected}/>
+              </div>
+          </div>
       </div>
     );
 }
