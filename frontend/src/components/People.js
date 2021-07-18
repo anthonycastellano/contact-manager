@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql } from 'react-apollo';
 import PersonDetails from "./PersonDetails";
 import { getPeopleQuery } from "../queries/queries";
+import './css/People.css';
 
 function People(props) {
     const [selected, setSelected] = React.useState(null);

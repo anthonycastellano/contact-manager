@@ -7,12 +7,15 @@ import Navigation from './components/Navigation';
 import People from './components/People';
 import Locations from './components/Locations';
 import AddPerson from "./components/AddPerson";
+import './index.css'
 
 
 // change to localhost when served from node
 const client = new ApolloClient({
-   uri: 'http://localhost:4000/graphql'
+   uri: 'http://192.168.1.23:4000/graphql'
 });
+
+// TODO: delete contacts/locations
 
 function App() {
   return (
